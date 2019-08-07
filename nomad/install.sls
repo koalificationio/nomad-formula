@@ -21,7 +21,7 @@ nomad-data-dir:
 nomad-install-binary:
   archive.extracted:
     - name: {{ nomad.bin_dir }}
-    - source: https://releases.hashicorp.com/nomad/{{ nomad.version }}/nomad_{{ nomad.version }}_{{ grains['kernel'] | lower }}_{{ nomad.arch }}.zip
+    - source: https://releases.hashicorp.com/nomad/{{ nomad.version }}/nomad_{{ nomad.version }}_{{ grains['kernel'] | lower }}_amd64.zip
     - source_hash: https://releases.hashicorp.com/nomad/{{ nomad.version }}/nomad_{{ nomad.version }}_SHA256SUMS
     # If we don't force it here, the mere presence of an older version will prevent an upgrade.
     - overwrite: True
