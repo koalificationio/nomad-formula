@@ -54,7 +54,6 @@ nomad-install-service:
     - name: service.systemctl_reload
     - onchanges:
       - file: nomad-install-service
-{% endif %}
 
 
 
