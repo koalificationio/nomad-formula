@@ -17,7 +17,7 @@
         }
   }
   , grain="cpuarch"
-  , merge=defaults)
+  , merge=salt['pillar.get']('defaults:lookup'))
 %}
 
 {## Add any overrides based on operating system. ##}
@@ -32,7 +32,7 @@
         'RedHat': {},
   }
   , grain="os_family"
-  , merge=defaults)
+  , merge=salt['pillar.get']('defaults:lookup'))
 %}
 
 {## Merge user configuration from in nomad:* pillar ##}
