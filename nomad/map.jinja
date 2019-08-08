@@ -4,8 +4,10 @@
 {## Start with defaults from defaults.sls ##}
 {% import_yaml 'nomad/defaults.yaml' as defaults %}
 
+{% set nomad = salt['pillar.get']('nomad', default=defaults.nomad, merge=True) %}
+
 {## Add any overrides based on CPU architecture. ##}
-{% set defaults = salt['grains.filter_by']({
+{% set nomad = salt['grains.filter_by']({
         'armv6l': {
             "arch": 'arm'
         },
@@ -17,11 +19,11 @@
         }
   }
   , grain="cpuarch"
-  , merge=salt['pillar.get']('defaults:lookup'))
+  , merge=nomad)
 %}
 
 {## Add any overrides based on operating system. ##}
-{% set defaults = salt['grains.filter_by']({
+{% set nomad = salt['grains.filter_by']({
         'Debian': {
             "git_pkg": 'git',
             "make_pkg": 'make',
@@ -32,8 +34,5 @@
         'RedHat': {},
   }
   , grain="os_family"
-  , merge=salt['pillar.get']('defaults:lookup'))
+  , merge=nomad)
 %}
-
-{## Merge user configuration from in nomad:* pillar ##}
-{% set nomad = salt['pillar.get']('nomad', default=defaults.nomad, merge=True) %}
