@@ -17,7 +17,7 @@
         }
   }
   , grain="cpuarch"
-  , merge=nomad)
+  , merge=defaults)
 %}
 
 {## Add any overrides based on operating system. ##}
@@ -32,7 +32,7 @@
         'RedHat': {},
   }
   , grain="os_family"
-  , merge=nomad)
+  , merge=defaults)
 %}
 
 {## Merge user configuration from in nomad:* pillar ##}
