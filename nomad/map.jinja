@@ -36,4 +36,3 @@
 %}
 
 {## Merge user configuration from in nomad:* pillar ##}
-{% set nomad = salt['pillar.get']('nomad', default=defaults.nomad, merge=True) %}
