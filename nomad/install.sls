@@ -55,4 +55,3 @@ nomad-install-service:
     - onchanges:
       - file: nomad-install-service
 
-
