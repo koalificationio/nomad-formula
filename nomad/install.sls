@@ -56,4 +56,3 @@ nomad-install-service:
       - file: nomad-install-service
 
 
-
